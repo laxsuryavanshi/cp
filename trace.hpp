@@ -12,6 +12,15 @@ operator<<(ostream& os, vector<T> V) {
 
 template <typename T>
 ostream&
+operator<<(ostream& os, deque<T> V) {
+    os << "[ ";
+    for(auto v: V) os << v << " ";
+    os << "]"; return os;
+    /*prints std::deque*/
+}
+
+template <typename T>
+ostream&
 operator<<(ostream& os, set<T> V) {
     os << "[ ";
     for(auto v: V) os << v << " ";
