@@ -54,7 +54,8 @@ operator>>(std::istream& is, std::pair<T, U>& P) {
 template <typename Arg>
 inline void
 __read(Arg& arg) { std::cin >> arg; }
-template <>
+// Need to verify WA on codechef
+/* template <>
 void
 __read(int& x) {
     bool neg = false;
@@ -67,7 +68,7 @@ __read(int& x) {
     for (; (c>47 && c<58); c=getchar())
         x = (x<<1) + (x<<3) + c - 48;
     if (neg) x *= -1;
-}
+} */
 template <typename Arg1, typename... Args>
 void
 __read(Arg1& arg1, Args&... args) {
