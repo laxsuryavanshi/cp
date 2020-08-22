@@ -25,14 +25,10 @@ using namespace __gnu_pbds;
 #define lb(v, x)  lower_bound(all(v), x)
 #define ub(v, x)  upper_bound(all(v), x)
 
-// #define rep(i, a, b)  for(decltype(b) i = (a); i <= (b); i++)
-// #define rrep(i, a, b) for(decltype(b) i = (a); i >= (b); i--)
-
 #define rep(i, a, b)  for(int i = (a); i <= static_cast<int>(b); i++)
 #define rrep(i, a, b) for(int i = (a); i >= static_cast<int>(b); i--)
 #define rin(x, v)     for(auto& x: v)
 
-// do not use with T = int
 template <typename T>
 std::istream&
 operator>>(std::istream& is, std::vector<T>& V) {
@@ -54,20 +50,6 @@ operator>>(std::istream& is, std::pair<T, U>& P) {
 template <typename Arg>
 inline void
 __read(Arg& arg) { std::cin >> arg; }
-template <>
-void
-__read(int& x) {
-    bool neg = false;
-    x = 0;
-    register char c = getchar();
-    if (c == '-') {
-        neg = true;
-        c = getchar();
-    }
-    for (; (c>47 && c<58); c=getchar())
-        x = (x<<1) + (x<<3) + c - 48;
-    if (neg) x *= -1;
-}
 template <typename Arg1, typename... Args>
 void
 __read(Arg1& arg1, Args&... args) {
@@ -85,6 +67,27 @@ static const int readin = []() {
     #endif
     return 0;
 }();
+template<typename T>
+inline void
+print(const vector<T>& v) {
+    if (v.empty()) return;
+    rep(i, 0, v.size()-2) {
+        cout << v[i] << " ";
+    } cout << v[v.size()-1] << nl;
+}
+static const int mod = 1e9+7;
+inline int add(int a, int b, int m=mod) { return ((a % m) + (b % m)) % m; }
+inline int sub(int a, int b, int m=mod) { return ((a % m) - (b % m) + m) % m; }
+inline int mul(int a, int b, int m=mod) { return ((a % m) * 1ll * (b % m)) % m; }
+inline int power(int a, int b, int m=mod) {
+    int res = 1;
+    while (b > 0) {
+        if (b % 2) res = mul(res, a, m);
+        a = mul(a, a, m);
+        b /= 2;
+    }
+    return res;
+}
 void solve_test();
 int32_t main() {
     int tc; read(tc);
@@ -93,4 +96,5 @@ int32_t main() {
     }
 }
 void solve_test() {
+    __gcd(20, 10);
 }
