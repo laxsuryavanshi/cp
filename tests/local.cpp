@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 using namespace std;
 using namespace __gnu_pbds;
 
@@ -8,26 +9,31 @@ using namespace __gnu_pbds;
 #else
 #define trace(...) 1
 #define debug(...) 1
-#define BENCHMARK(func, ...) func()
+#define BENCHMARK(func, ...) func(__VA_ARGS__)
 #endif // LOCAL_DEBUG
-#if __cplusplus >= 201703L
-#define register // warning: ISO C++17 does not allow ‘register’ storage class specifier [-Wregister]
-#endif // __cplusplus >= 201703L
-// v -> container_t || x -> element_t
-#define nl        '\n'
-#define pb(x)     push_back(x)
-#define eb(x)     emplace_back(x)
-#define pf(x)     push_front(x)
-#define all(v)    v.begin(), v.end()
-#define rall(v)   v.rbegin(), v.rend()
-#define sort(v)   sort(all(v))
-#define rsort(v)  sort(rall(v))
-#define lb(v, x)  lower_bound(all(v), x)
-#define ub(v, x)  upper_bound(all(v), x)
 
-#define rep(i, a, b)  for(int i = (a); i <= static_cast<int>(b); i++)
-#define rrep(i, a, b) for(int i = (a); i >= static_cast<int>(b); i--)
-#define rin(x, v)     for(auto& x: v)
+// v -> container_t || x -> element_t
+#define nl             '\n'
+#define pb(x)          push_back(x)
+#define eb(x)          emplace_back(x)
+#define pf(x)          push_front(x)
+#define all(v)         v.begin(), v.end()
+#define rall(v)        v.rbegin(), v.rend()
+#define ssort(v, ...)  sort(all(v), ##__VA_ARGS__)
+#define rsort(v, ...)  sort(rall(v), ##__VA_ARGS__)
+#define lb(v, x)       lower_bound(all(v), x)
+#define ub(v, x)       upper_bound(all(v), x)
+#define size(v)        static_cast<int>(v.size())
+#define rep(i, a, b)   for(int i = (a); i <= (b); i++)
+#define rrep(i, a, b)  for(int i = (a); i >= (b); i--)
+#define rin(x, v)      for(auto& x: v)
+#define ll             long long
+#define ld             long double
+#define pii            pair<int, int>
+#define vii            vector<int>
+#define vll            vector<ll>
+#define vpii           vector<pii>
+#define vb             vector<bool>
 
 template <typename T>
 std::istream&
@@ -63,17 +69,22 @@ static const int fastio = []() {
 static const int readin = []() {
     #ifdef LOCAL_INPUT
     auto input = freopen("in", "r", stdin);
-    if (!input) cerr << "ERROR: stdin file not found" << endl;
+    if (!input) debug("ERROR: stdin file not found");
     #endif
     return 0;
 }();
+template<template <typename _> typename C, typename T>
+inline void
+print(const C<T>& v) {
+    if (v.empty()) return;
+    rep(i, 0, size(v)-2) {
+        cout << v[i] << " ";
+    } cout << v[size(v)-1] << nl;
+}
 template<typename T>
 inline void
-print(const vector<T>& v) {
-    if (v.empty()) return;
-    rep(i, 0, v.size()-2) {
-        cout << v[i] << " ";
-    } cout << v[v.size()-1] << nl;
+print(const T& v) {
+    cout << v << nl;
 }
 static const int mod = 1e9+7;
 inline int add(int a, int b, int m=mod) { return ((a % m) + (b % m)) % m; }
@@ -96,5 +107,4 @@ int32_t main() {
     }
 }
 void solve_test() {
-    __gcd(20, 10);
 }
