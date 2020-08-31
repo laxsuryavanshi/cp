@@ -2,3 +2,5 @@
 in
 out
 .vscode
+*.out
+*.txt
